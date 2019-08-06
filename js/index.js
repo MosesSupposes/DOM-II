@@ -137,18 +137,13 @@ function createForm() {
 
     submitBtn.role = 'submit'
     submitBtn.classList.add('btn')
-    
 
-    container.appendChild(heading)
-    container.appendChild(form)
+    appendChildren(container, [heading, form])
 
-    form.appendChild(fNameLabel)
-    form.appendChild(fName)
-    form.appendChild(lNameLabel)
-    form.appendChild(lName)
-    form.appendChild(emailLabel)
-    form.appendChild(email)
-    form.appendChild(submitBtn)
+    appendChildren(
+        form, 
+        [fNameLabel, fName, lNameLabel, lName, emailLabel, email, submitBtn]
+    )
 
     homeContainer.appendChild(container)
 }
@@ -180,5 +175,11 @@ function wireForm() {
 function listenForWindowResize() {
     window.addEventListener('resize', event => {
         document.body.style.backgroundColor = 'rgba(200,200,200, 0.3)'
+    })
+}
+
+function appendChildren(to, elements) {
+    elements.forEach(element => {
+        to.appendChild(element)
     })
 }
